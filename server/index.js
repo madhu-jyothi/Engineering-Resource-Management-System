@@ -7,7 +7,28 @@ app.use(express.json());
 
 // Enable CORS
 const cors = require('cors');
-app.use(cors());
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://engineering-management-system.netlify.app"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+
+      if (!origin) {
+        return callback(null, true)
+      };
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));
