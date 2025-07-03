@@ -54,7 +54,7 @@
    npm run dev
    ```
 7. **Access the app:**
-   - Frontend: [http://localhost:5173](http://localhost:5173)
+   - Frontend: [engineering-management-system.netlify.app](engineering-management-system.netlify.app)
    - Backend API: [https://engineering-resource-management-system-hj5b.onrender.com/](https://engineering-resource-management-system-hj5b.onrender.com/)
 
 ## Tools Used
