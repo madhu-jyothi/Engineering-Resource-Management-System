@@ -55,7 +55,7 @@
    ```
 7. **Access the app:**
    - Frontend: [http://localhost:5173](http://localhost:5173)
-   - Backend API: [http://localhost:5000](http://localhost:5000)
+   - Backend API: [https://engineering-resource-management-system-hj5b.onrender.com/](https://engineering-resource-management-system-hj5b.onrender.com/)
 
 ## Tools Used
 - **VS Code** (development environment)

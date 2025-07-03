@@ -11,7 +11,7 @@ export default function EngineerDashboard({ token }) {
 
   useEffect(() => {
     if (!user) return;
-    fetch(`http://localhost:5000/api/assignments?engineerId=${user._id}`,
+    fetch(`${import.meta.env.VITE_BASE_API}/api/assignments?engineerId=${user._id}`,
       { headers: { Authorization: `Bearer ${token}` } })
       .then(res => res.json())
       .then(data => {

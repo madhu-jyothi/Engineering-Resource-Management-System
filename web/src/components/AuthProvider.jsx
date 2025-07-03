@@ -8,7 +8,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     if (token) {
-      fetch('http://localhost:5000/api/auth/profile', {
+      fetch(`${import.meta.env.VITE_BASE_API}/api/auth/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then(res => res.json())
@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
     setToken(jwt);
     localStorage.setItem('token', jwt);
     try {
-      const res = await fetch('http://localhost:5000/api/auth/profile', {
+      const res = await fetch(`${import.meta.env.VITE_BASE_API}/api/auth/profile`, {
         headers: { Authorization: `Bearer ${jwt}` },
       });
       const data = await res.json();

@@ -26,9 +26,9 @@ export default function ManagerDashboard({ token }) {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:5000/api/projects', { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json()),
-      fetch('http://localhost:5000/api/engineers', { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json()),
-      fetch('http://localhost:5000/api/assignments', { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json()),
+      fetch(`${import.meta.env.VITE_BASE_API}/api/projects`, { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json()),
+      fetch(`${import.meta.env.VITE_BASE_API}/api/engineers`, { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json()),
+      fetch(`${import.meta.env.VITE_BASE_API}/api/assignments`, { headers: { Authorization: `Bearer ${token}` } }).then(res => res.json()),
     ]).then(([projects, engineers, assignments]) => {
       setProjects(projects);
       setEngineers(engineers);
@@ -44,7 +44,7 @@ export default function ManagerDashboard({ token }) {
     e.preventDefault();
     setSubmitting(true);
     try {
-      await fetch('http://localhost:5000/api/assignments', {
+      await fetch(`${import.meta.env.VITE_BASE_API}/api/assignments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify(form),
@@ -88,7 +88,6 @@ export default function ManagerDashboard({ token }) {
   // --- Analytics: Team Utilization ---
   const totalCapacity = engineers.reduce((sum, e) => sum + (e.maxCapacity || 0), 0);
   const totalAllocated = engineers.reduce((sum, e) => sum + getEngineerAllocation(e._id), 0);
-  const utilization = totalCapacity ? Math.round((totalAllocated / totalCapacity) * 100) : 0;
 
   // Helper: get next available date for an engineer
   const getEngineerNextAvailable = (engineerId) => {
